@@ -8,7 +8,7 @@
 
         <!-- title and favicon -->
         <title>Web App</title>
-        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+        <link rel="icon" type="image/x-icon" href="assets/baker.png" />
 
         <!-- js -->
         <script type="module" src="app.js"></script>
@@ -40,8 +40,29 @@
                     />
                 </section>
                 <section id="opponents" class="opponents">
-                    <input type="text" /> <button id="add-opponent" class="oppo-button">+</button>
+                    <form id="add-bakegood">
+                        <input txt="baked-good" required />
+                        <button id="add-opponent" class="oppo-button">+</button>
+                    </form>
+                    <div id="oppo-list" class="oppo-list">
+                        <p>
+                            <img class="oppo-img" src="/assets/dough.png" alt="a mixing bowl" />
+                            <span id="oppo-text" class="oppo-text">
+                                Steps Required: <span id="oppo-health">3</span></span
+                            >
+                        </p>
+
+                        <p>
+                            <img class="oppo-img" src="/assets/roller.png" alt="a rolling pin" />
+                            <span id="oppo-text" class="oppo-text">
+                                Steps Required: <span id="oppo-health">2</span></span
+                            >
+                        </p>
+                    </div>
                 </section>
+            </div>
+            <div class="bake-build">
+                <img src="/assets/bg.png" alt="a bakery" />
             </div>
         </main>
     </body>

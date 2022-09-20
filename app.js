@@ -7,6 +7,45 @@ const bakerPic = document.getElementById('baker-img');
 let baker = {
     hp: 20,
 };
+
+let bakedgoods [
+    {
+        name: Bread;
+        type: bread;
+        hp: 2;
+    },
+    {
+        name: Pie;
+        type: pie;
+        hp: 3; 
+    }
+];
+
+/*baked types*/
+ const bread = {
+    type: 'bread',
+    hp: 2,
+ }
+ const pie = {
+    type: 'pie',
+    hp: 3,
+ }
+ const macaron = {
+    type: 'macaron',
+    hp: 4,
+ }
+ const deathCake = {
+    type: 'death-cake',
+    hp: 50,
+ }
+
+
+/*probability arrays*/ 
+
+const bakerSteps = [0, 1, 1, 2, 2, 3, 4, 5];
+const goodDelays = [0, 0, 1, 1, 1, 2, 2, 3];
+const goodTypes = [bread, bread, bread, bread, bread, bread, bread, bread, pie, pie, pie, pie, pie, pie, macaron, macaron, deathCake]
+
 /* Events */
 
 /* Display Functions */

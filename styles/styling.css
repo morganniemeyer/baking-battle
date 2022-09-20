@@ -7,3 +7,46 @@ text?: 9f2214
 text?: 2f4370
 
 */
+
+h2 {
+    background: #ffeda9;
+    border: 4px solid #e08769;
+    text-align: center;
+    padding: 20px;
+    color: #9f2214;
+}
+
+p {
+    background: #ffeda9;
+    border: 4px solid #e08769;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #9f2214;
+}
+
+.bakery-roof {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.baker img {
+    height: 200px;
+}
+
+.oppo-button {
+    background: #ffeda9;
+    border: 3px solid #e08769;
+    margin: 5px;
+    border-radius: 5px;
+    color: #9f2214;
+}
+
+input {
+    background: #ffeda9;
+    border: 3px solid #e08769;
+    margin: 5px;
+    border-radius: 5px;
+}

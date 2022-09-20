@@ -66,3 +66,6 @@ Items baked (score)
 click add opponent
 click opponent
 click "clean the kitchen"
+
+
+

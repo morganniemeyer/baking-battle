@@ -1,9 +1,11 @@
 /* Imports */
 import { renderGoods } from './render-bread.js';
+import { getRandomItem } from './utils.js';
 /* Get DOM Elements */
 const bakerHealth = document.getElementById('baker-hp');
 const bakerPic = document.getElementById('baker-img');
 const bakeryList = document.getElementById('oppo-list');
+const addProjectForm = document.getElementById('add-bakegood');
 /* State */
 let baker = {
     hp: 20,
@@ -18,7 +20,7 @@ let bakedGoods = [
     {
         name: 'Pie',
         type: 'pie',
-        hp: 0,
+        hp: 3,
     },
 ];
 
@@ -66,6 +68,24 @@ const goodTypes = [
 
 /* Events */
 
+addProjectForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(addProjectForm);
+    const goodType = getRandomItem(goodTypes);
+
+    const item = {
+        name: formData.get('baked-good'),
+        type: goodType.type,
+        hp: goodType.hp,
+    };
+
+    bakedGoods.push(item);
+
+    displayGoods();
+
+    addProjectForm.reset();
+});
+
 /* Display Functions */
 
 function displayBaker() {
@@ -78,7 +98,7 @@ function displayBaker() {
 }
 
 function displayGoods() {
-    // bakeryList.innerHTML = '';
+    bakeryList.innerHTML = '';
 
     for (const item of bakedGoods) {
         const goodEl = renderGoods(item);

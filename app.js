@@ -127,7 +127,23 @@ function displayGoods() {
 
             baker.hp = Math.max(0, baker.hp - goodDelay);
             item.hp = Math.max(0, item.hp - bakerPrep);
+
+            message = '';
+            if (bakerPrep === 0) {
+                message += `You took a break.`;
+            } else {
+                message += `You worked on ${item.name} and got ${bakerPrep} steps done. `;
+            }
+
+            if (goodDelay === 0) {
+                message += `${item.name} went along with it.`;
+            } else {
+                message += `${item.name} fought back and slowed you down by ${goodDelay}.`;
+            }
+
+            displayMessage();
             displayGoods();
+            displayBaker();
         });
     }
 }

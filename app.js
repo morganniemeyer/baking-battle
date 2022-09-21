@@ -6,6 +6,7 @@ const bakerHealth = document.getElementById('baker-hp');
 const bakerPic = document.getElementById('baker-img');
 const bakeryList = document.getElementById('oppo-list');
 const addProjectForm = document.getElementById('add-bakegood');
+const messageContent = document.getElementById('message');
 /* State */
 let baker = {
     hp: 20,
@@ -23,6 +24,7 @@ let bakedGoods = [
         hp: 3,
     },
 ];
+let message = '';
 
 /*baked types*/
 const bread = {
@@ -44,7 +46,7 @@ const deathCake = {
 
 /*probability arrays*/
 
-const bakerSteps = [0, 1, 1, 2, 2, 3, 4, 5];
+const bakerSteps = [0, 1, 1, 2, 2, 3, 4];
 const goodDelays = [0, 0, 1, 1, 1, 2, 2, 3];
 const goodTypes = [
     bread,
@@ -61,6 +63,12 @@ const goodTypes = [
     pie,
     pie,
     pie,
+    pie,
+    pie,
+    macaron,
+    macaron,
+    macaron,
+    macaron,
     macaron,
     macaron,
     deathCake,
@@ -80,13 +88,17 @@ addProjectForm.addEventListener('submit', (e) => {
     };
 
     bakedGoods.push(item);
-
+    message = `${item.name}, a ${item.type}, is ready for prep!`;
     displayGoods();
+    displayMessage();
 
     addProjectForm.reset();
 });
 
 /* Display Functions */
+function displayMessage() {
+    messageContent.textContent = message;
+}
 
 function displayBaker() {
     bakerHealth.textContent = Math.max(0, baker.hp);
@@ -103,8 +115,21 @@ function displayGoods() {
     for (const item of bakedGoods) {
         const goodEl = renderGoods(item);
         bakeryList.append(goodEl);
+
+        goodEl.addEventListener('click', () => {
+            if (item.hp < 1) {
+                message = `No use prepping a made good!`;
+                displayMessage();
+                return;
+            }
+            const bakerPrep = getRandomItem(bakerSteps);
+            const goodDelay = getRandomItem(goodDelays);
+
+            baker.hp = Math.max(0, baker.hp - goodDelay);
+            item.hp = Math.max(0, item.hp - bakerPrep);
+            displayGoods();
+        });
     }
-    return bakeryList;
 }
 
 // (don't forget to call any display functions you want to run on page load!)

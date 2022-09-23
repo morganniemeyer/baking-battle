@@ -7,6 +7,8 @@ const bakerPic = document.getElementById('baker-img');
 const bakeryList = document.getElementById('oppo-list');
 const addProjectForm = document.getElementById('add-bakegood');
 const messageContent = document.getElementById('message');
+const completeCount = document.getElementById('oppo-defeat');
+
 /* State */
 let baker = {
     hp: 20,
@@ -25,6 +27,7 @@ let bakedGoods = [
     },
 ];
 let message = '';
+let completed = 0;
 
 /*baked types*/
 const bread = {
@@ -109,6 +112,10 @@ function displayBaker() {
     }
 }
 
+function updateScore() {
+    completeCount.textContent = `${completed}`;
+}
+
 function displayGoods() {
     bakeryList.innerHTML = '';
 
@@ -141,6 +148,11 @@ function displayGoods() {
                 message += `${item.name} fought back and slowed you down by ${goodDelay}.`;
             }
 
+            if (item.hp < 1) {
+                completed++;
+                updateScore();
+            }
+
             displayMessage();
             displayGoods();
             displayBaker();
@@ -151,3 +163,4 @@ function displayGoods() {
 // (don't forget to call any display functions you want to run on page load!)
 displayBaker();
 displayGoods();
+updateScore();

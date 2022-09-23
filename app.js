@@ -8,6 +8,7 @@ const bakeryList = document.getElementById('oppo-list');
 const addProjectForm = document.getElementById('add-bakegood');
 const messageContent = document.getElementById('message');
 const completeCount = document.getElementById('oppo-defeat');
+const cleanButton = document.getElementById('cleanup');
 
 /* State */
 let baker = {
@@ -96,6 +97,18 @@ addProjectForm.addEventListener('submit', (e) => {
     displayMessage();
 
     addProjectForm.reset();
+});
+
+cleanButton.addEventListener('click', () => {
+    const raw = [];
+
+    for (const item of bakedGoods) {
+        if (item.hp > 0) {
+            raw.push(item);
+        }
+    }
+    bakedGoods = raw;
+    displayGoods();
 });
 
 /* Display Functions */
